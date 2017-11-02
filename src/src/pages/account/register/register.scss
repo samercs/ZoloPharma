@@ -1,0 +1,24 @@
+ .ios, .md {
+    page-register {
+        @include input-with-flag();
+        @include footer-with-button();
+        @include inline-items;
+
+        #hidden-btn {
+            visibility: hidden;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+// Arabic language styles
+// ---------------------------------------------
+ion-app.lang-ar { 
+    page-register  { 
+        @include input-with-flag-arabic();
+        @include inline-items-arabic;
+    }
+}

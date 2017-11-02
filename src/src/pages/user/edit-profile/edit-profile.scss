@@ -1,0 +1,14 @@
+ .ios, .md {
+    page-edit-profile {
+        @include input-with-flag();
+        @include footer-with-button();
+    }
+}
+
+// Arabic language styles
+// ---------------------------------------------
+ion-app.lang-ar { 
+    page-edit-profile  { 
+        @include input-with-flag-arabic();
+    }
+}

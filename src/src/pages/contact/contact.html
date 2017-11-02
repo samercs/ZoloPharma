@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{ 'PAGES.CONTACT' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div [@backgroundImageFadeIn]="backgroundImageState" class="logo" [style.background-image]="'url(assets/img/demo1.jpg)'"></div>
+    <div  class="logo-fg"></div>
+    <div class="title-container">
+        <h2 [@mainTitleFadeInDown]="mainTitleState">{{ 'CONTACT_PAGE.TITLE' | translate }}</h2>
+    </div>
+
+    <div padding class="contact-details">
+        <div class="social-links">
+            <ion-item [@emailSocialFadeIn]="emailSocialState" mode="md" no-lines>
+                <ion-icon color="primary" name="mail" item-left></ion-icon>
+                <span class="detail">{{ 'CONTACT_PAGE.MAIL' | translate }}</span>
+            </ion-item>
+            <ion-item [@phoneSocialFadeIn]="phoneSocialState"mode="md" no-lines>
+                <ion-icon color="primary" name="call" item-left></ion-icon>
+                <span class="detail">+965 6681 9946</span>
+            </ion-item>
+            <ion-item [@facebookSocialFadeIn]="facebookSocialState" mode="md" no-lines>
+                <ion-icon color="primary" name="logo-facebook" item-left></ion-icon>
+                <span class="detail">{{ 'CONTACT_PAGE.FACEBOOK_LINK' | translate }}</span>
+            </ion-item>
+            <ion-item [@instagramSocialFadeIn]="instagramSocialState" mode="md" no-lines>
+                <ion-icon color="primary" name="logo-instagram" item-left></ion-icon>
+                <span class="detail">{{ 'CONTACT_PAGE.INSTAGRAM_LINK' | translate }}</span>
+            </ion-item>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <button [@subscriptionsButtonFadeInUp]="subscriptionsButtonState" (click)="showSubscriptionsDetails()" color="primary" ion-button full>{{ 'CONTACT_PAGE.SUBSCRIPTIONS_BUTTON_TEXT' | translate }}</button>
+    </ion-toolbar>
+</ion-footer>

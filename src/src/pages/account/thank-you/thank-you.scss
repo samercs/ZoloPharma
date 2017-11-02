@@ -1,0 +1,19 @@
+ .ios, .md {
+    page-thank-you{
+        @include input-with-color-background('light');
+        @include simple-button-container(16px 0);
+        @include footer-with-button();
+
+        h2, p {
+            text-align: center;
+        }
+    }
+}
+
+// Arabic language styles
+// ---------------------------------------------
+ion-app.lang-ar { 
+    page-thank-you  { 
+        
+    }
+}

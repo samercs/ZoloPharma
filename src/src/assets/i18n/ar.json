@@ -1,0 +1,160 @@
+{
+    "LANGUAGE": "English",
+    "LOG_IN": "Log In",
+    "LOG_OUT": "Sign Out",
+    "LOG_OUT_CONFIRMATION": "Are you sure you want to sign out?",
+    "ERROR": "Error",
+    "OK": "Ok",
+    "CANCEL": "Cancel",
+    "LOADING": "Loading...",
+    "SEARCHING": "Searching...",
+    "SUCCESS": "Success",
+    "PAGE_NOT_YET_IMPLEMENTED": "Page not yet implemented...",
+    "PAGES": {
+        "HOME": "Home",
+        "LOGIN": "Login",
+        "REGISTER": "Register",
+        "RESET_PASSWORD": "Reset Password",
+        "SUBSCRIPTIONS": "Subscriptions",
+        "SEARCH": "Search",
+        "SEARCH_RESULTS": "Search results",
+        "VIDEO_DETAILS": "Video details",
+        "START_LIST_AND_RESULTS": "Start List & Results",
+        "COMPETITION_DETAILS": "Competition Details",
+        "FAVORITES": "Favorites",
+        "SETTINGS": "Settings",
+        "CONTACT": "Contact",
+        "EDIT_PROFILE": "Edit Profile"
+    },
+    "HOME_PAGE": {
+        "LOG_IN": "Log In",
+        "REGISTER": "Register"
+    },
+    "SIGN_IN": {
+        "RESET_PASSWORD": "Forgot Password?"
+    },
+    "REGISTER_PAGE": {
+        "BUTTON_TEXT": "Register"
+    },
+    "SEARCH_PAGE": {
+        "SEARCH_BUTTON_TEXT": "Search",
+        "RESET_BUTTON_TEXT": "Reset",
+        "RIDERS_NAME": "Rider",
+        "HORSE_NAME": "Horse",
+        "COMPETITION": "Competition",
+        "RIDERS_NAME_PLACEHOLDER": "Search rider...",
+        "HORSE_NAME_PLACEHOLDER": "Search horse...",
+        "COMPETITION_PLACEHOLDER": "Search competition..."
+    },
+    "SEARCH_RESULTS_PAGE": {
+        "NO_RESULTS": "We couldn't find any matches for your search."
+    },
+    "VIDEO_DETAILS_PAGE": {
+        "NO_SUBSCRIPTION": "Since you don't have a valid subscription, you'll be only able to watch the first <strong>10 seconds</strong> of the video.",
+        "FAVORITES_ADDING": "Adding video to favorites...",
+        "FAVORITES_REMOVING": "Removing video from favorites..."
+    },
+    "FAVORITES_PAGE": {
+        "NO_RESULTS": "You don't have favorite videos yet.",
+        "DELETE": "Remove"
+    },
+    "CONTACT_PAGE": {
+        "TITLE": "Watch Horse TV",
+        "MAIL": "info@watchhorse.tv",
+        "FACEBOOK_LINK": "WatchHorseTV",
+        "INSTAGRAM_LINK": "WatchHorseTV",
+        "SUBSCRIPTIONS_BUTTON_TEXT": "Packages description"
+    },
+    "START_LIST_AND_RESULTS_PAGE": {
+        "COMPETITION_DETAILS": "Competition details",
+        "COMPETITION_NAME": "Name",
+        "COMPETITION_LOCATION": "Location",
+        "COMPETITION_DATE": "Date",
+        "PLACEHOLDER": "Search competition...",
+        "START_LIST": "Start list",
+        "RESULTS": "Results"
+    },
+    "COMPETITION_DETAILS_PAGE": {
+        "COMPETITION_DETAILS": "Competition details",
+        "COMPETITION_NAME": "Name",
+        "COMPETITION_LOCATION": "Location",
+        "COMPETITION_DATE": "Date",
+        "START_LIST": "Start list",
+        "RESULTS": "Results",
+        "INVITATION": "Invitation"
+    },
+    "SETTINGS_PAGE": {
+        "PROFILE_DETAILS": "Profile details",
+        "FIRST_NAME": "First name",
+        "LAST_NAME": "Last name",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL": "Email",
+        "EDIT_PROFILE_BUTTON_TEXT": "Edit profile",
+        "SUBSCRIPTION_DETAILS": "Subscription details",
+        "UPDATE_SUBSCRIPTION_BUTTON_TEXT": "Update Subscription",
+        "SUBSCRIPTION_DAYS_LEFT": "{{ value }} days left to the end of your subscription",
+        "SUBSCRIPTION_CERO_DAYS_LEFT": "Your subscription ends today",
+        "SUBSCRIPTION_EXPIRED": "Your subscription has expired on {{ value }}",
+        "PERSONAL_DETAILS": "Personal Details",
+        "CHANGE_PASSWORD": "Change Password"
+    },
+    "EDIT_PROFILE_PAGE": {
+        "UPDATE_PROFILE_BUTTON_TEXT": "Update profile",
+        "CHANGE_PASSWORD_BUTTON_TEXT": "Change password",
+        "SUCCESS_MESSAGE": "Changes have been saved"
+    },
+    "SUBSCRIPTION_PAGE": {
+        "BUTTON_TEXT": "Confirm"
+    },
+    "THANK_YOU_PAGE": {
+        "TITLE": "Thank you...",
+        "TEXT": "Please await an email from Watch Horse TV",
+        "BUTTON_TEXT": "Continue"
+    },
+    "PASSWORD_RESET_PAGE": {
+        "TEXT": "If you have lost or forgotten your password please enter your email address in the form below and we will send you instructions on how to reset your password.",
+        "SEND_INSTRUCTIONS": "Send Password",
+        "RESULT": "Your password has been sent"
+    },
+    "FIELDS": {
+        "NAME": "Name",
+        "FIRST_NAME": "First Name",
+        "LAST_NAME": "Last Name",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "CONFIRM_PASSWORD": "Confirm password",
+        "CURRENT_PASSWORD": "Current password",
+        "NEW_PASSWORD": "New password",
+        "CONFIRM_NEW_PASSWORD": "Confirm new password",
+        "PHONE_COUNTRY_CODE": "Code",
+        "PHONE_NUMBER": "Phone Number",
+        "COUNTRY": "Country"
+    },
+    "CUSTOM_DROPDOWN": {
+        "SELECT_COUNTRY": "Select a country",
+        "ENTER_COUNTRY_NAME": "Enter the country name...",
+        "COUNTRY_NAME": "country name",
+        "SELECT_RIDER": "Select a rider",
+        "ENTER_RIDER_NAME": "Search rider...",
+        "RIDER_NAME": "Rider's name",
+        "SELECT_HORSE": "Select a horse",
+        "ENTER_HORSE_NAME": "Search horse...",
+        "HORSE_NAME": "Horse name",
+        "SELECT_COMPETITION": "Select a competition",
+        "ENTER_COMPETITION_NAME": "Search competition...",
+        "COMPETITION_NAME": "Competition name",
+        "FILTER_TEXT": "Only the first 25 results are being shown. Please continue entering the {{ value }} to see more results."
+    },
+    "VALIDATIONS": {
+        "REQUIRED": "Please enter your {{ value }}",
+        "INVALID_EMAIL_ADDRESS": "Invalid email address",
+        "INVALID_PASSWORD": "Invalid password. Password must be at least six characters long",
+        "INVALID_EMAIL_OR_PASSWORD": "Your email or password is incorrect. Please try again.",
+        "PASSWORDS_DO_NOT_MATCH": "Your password and confirmation password do not match",
+        "MIN_LENGTH": "Minimum length is {{ value }}",
+        "MAX_LENGTH": "Maximum length is {{ value }}",
+        "INVALID_FIELD": "Invalid field",
+        "INVALID_PHONE_NUMBER": "Invalid phone number",
+        "INVALID_PHONE_COUNTRY_CODE": "Invalid phone country code"
+    }
+}

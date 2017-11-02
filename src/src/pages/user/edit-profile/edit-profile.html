@@ -1,0 +1,132 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{ 'PAGES.EDIT_PROFILE' | translate }}</ion-title>
+    </ion-navbar>
+    <ion-toolbar color="dark-primary" mode="md">
+        <ion-segment color="white" mode="md" [(ngModel)]="selectedTab">
+            <ion-segment-button value="personalDetailsTab">
+                {{ 'SETTINGS_PAGE.PERSONAL_DETAILS' | translate }}
+            </ion-segment-button>
+            <ion-segment-button value="changePasswordTab">
+                {{ 'SETTINGS_PAGE.CHANGE_PASSWORD' | translate }}
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div [ngSwitch]="selectedTab">
+        <div *ngSwitchCase="'personalDetailsTab'">
+            <form *ngIf="profileModel" [formGroup]="profileForm">
+
+                <ion-row class="form-container">
+                    <ion-col>
+                        <ion-list inset>
+
+                            <!-- First Name -->
+                            <ion-item [@firstNameFieldFadeIn]="firstNameFieldState" class="form-input">
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.FIRST_NAME' | translate }}</ion-label>
+                                <ion-input formControlName="firstName" type="text"></ion-input>
+                            </ion-item>
+                            <error-message [submitted]="profileFormSubmitAttempt" [name]="'FIELDS.FIRST_NAME' | translate | lowercase" [control]="profileForm.get('firstName')"></error-message>
+
+                            <!-- Last Name -->
+                            <ion-item [@lastNameFieldFadeIn]="lastNameFieldState" class="form-input">
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.LAST_NAME' | translate }}</ion-label>
+                                <ion-input formControlName="lastName" type="text"></ion-input>
+                            </ion-item>
+                            <error-message [submitted]="profileFormSubmitAttempt" [name]="'FIELDS.LAST_NAME' | translate | lowercase" [control]="profileForm.get('lastName')"></error-message>
+
+                            <!-- Email -->
+                            <ion-item [@emailFieldFadeIn]="emailFieldState" class="form-input">
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.EMAIL' | translate }}</ion-label>
+                                <ion-input formControlName="email" type="email"></ion-input>
+                            </ion-item>
+                            <error-message [submitted]="profileFormSubmitAttempt" [name]="'FIELDS.EMAIL' | translate | lowercase" [control]="profileForm.get('email')"></error-message>
+
+                            <!-- Country Name -->
+                            <ion-item [@countryFieldFadeIn]="countryFieldState" (click)="showCountriesDropdown()" class="country-dropdown form-input">
+                                <ion-avatar item-left>
+                                    <i class="flag flag-{{ selectedCountry?.isoCode | lowercase }}"></i>
+                                </ion-avatar>
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.COUNTRY' | translate }}</ion-label>
+                                <ion-input readonly formControlName="countryName" type="text"></ion-input>
+                            </ion-item>
+                            <error-message [submitted]="profileFormSubmitAttempt" [name]="'FIELDS.COUNTRY' | translate | lowercase" [control]="profileForm.get('countryName')"></error-message>
+
+                            <!-- Phone number -->
+                            <ion-row class="two-items-container">
+                                <ion-col width-33>
+                                    <ion-item [@phoneCodeFieldFadeIn]="phoneCodeFieldState" class="form-input">
+                                        <ion-label color="placeholder" floating>{{ 'FIELDS.PHONE_COUNTRY_CODE' | translate }}</ion-label>
+                                        <ion-input formControlName="phoneCountryCode" type="text"></ion-input>
+                                    </ion-item>
+                                    <error-message [submitted]="profileFormSubmitAttempt" [name]="'FIELDS.PHONE_COUNTRY_CODE' | translate | lowercase" [control]="profileForm.get('phoneCountryCode')"></error-message>
+                                </ion-col>
+                                <ion-col width-67>
+                                    <ion-item [@phoneNumberFieldFadeIn]="phoneNumberFieldState" class="form-input">
+                                        <ion-label color="placeholder" floating>{{ 'FIELDS.PHONE_NUMBER' | translate }}</ion-label>
+                                        <ion-input formControlName="phoneNumber" type="text"></ion-input>
+                                    </ion-item>
+                                    <error-message [submitted]="profileFormSubmitAttempt" [name]="'FIELDS.PHONE_NUMBER' | translate | lowercase" [control]="profileForm.get('phoneNumber')"></error-message>
+                                </ion-col>
+                            </ion-row>
+
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
+            </form>
+        </div>
+
+        <div *ngSwitchCase="'changePasswordTab'">
+            <form [formGroup]="changePasswordForm">
+                <ion-row class="form-container">
+                    <ion-col>
+                        <ion-list inset>
+
+                            <!-- Current Password -->
+                            <ion-item class="form-input">
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.CURRENT_PASSWORD' | translate }}</ion-label>
+                                <ion-input formControlName="currentPassword" type="password"></ion-input>
+                            </ion-item>
+                            <error-message [submitted]="changePasswordSubmitAttempt" [name]="'FIELDS.CURRENT_PASSWORD' | translate" [control]="changePasswordForm.get('currentPassword')"></error-message>
+
+                            <!-- New Password -->
+                            <ion-item class="form-input">
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.NEW_PASSWORD' | translate }}</ion-label>
+                                <ion-input formControlName="password" type="password"></ion-input>
+                            </ion-item>
+                            <error-message [submitted]="changePasswordSubmitAttempt" [name]="'FIELDS.NEW_PASSWORD' | translate" [control]="changePasswordForm.get('password')"></error-message>
+
+                            <!-- New Password Confirmation -->
+                            <ion-item class="form-input">
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.CONFIRM_NEW_PASSWORD' | translate }}</ion-label>
+                                <ion-input formControlName="confirmPassword" type="password"></ion-input>
+                            </ion-item>
+
+                            <!-- 
+                                The password confirmation field does not have a error-message element but a form-messages. This is because 
+                                its validation depends on the password field, so it's a form validation instead of a single field validation. 
+                            -->
+                            <form-error-message [submitted]="changePasswordSubmitAttempt" [form]="changePasswordForm" [control]="changePasswordForm.get('confirmPassword')"></form-error-message>
+
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
+            </form>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <div [ngSwitch]="selectedTab">
+            <div *ngSwitchCase="'personalDetailsTab'">
+                <button [@updateProfileButtonFadeInUp]="updateProfileButtonState" [disabled]="!hasChanged" (click)="saveProfileChanges()" color="primary" ion-button full>{{ 'EDIT_PROFILE_PAGE.UPDATE_PROFILE_BUTTON_TEXT' | translate }}</button>
+            </div>
+            <div *ngSwitchCase="'changePasswordTab'">
+                <button (click)="savePasswordChanges()" color="primary" ion-button full>{{ 'EDIT_PROFILE_PAGE.CHANGE_PASSWORD_BUTTON_TEXT' | translate }}</button>
+            </div>
+        </div>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{ title }}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="exit()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar color="dark-primary">
+        <ion-searchbar #searchbar [debounce]="0" [placeholder]="placeholder" (ionInput)="filterAvailableOptions($event)"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item text-wrap class="option-item" [class.no-icons]="!showIcons" (click)="selectOption(option)" *ngFor="let option of visibleOptions; trackBy:identifyOption">
+            <ion-avatar *ngIf="showIcons" item-left>
+                <i class="flag flag-{{option.key | lowercase }}"></i>
+            </ion-avatar>
+            {{ option.value }}
+        </ion-item>
+        <!--
+            // Removed in WH-71: Search List 25 Limit
+            // --------------------------------------
+            <ion-item class="info" text-wrap *ngIf="options && options.length > 25">
+                {{ 'CUSTOM_DROPDOWN.FILTER_TEXT' | translate: { value: itemsName } }}
+            </ion-item>
+        -->
+
+    </ion-list>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreOptions($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

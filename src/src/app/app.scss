@@ -1,0 +1,590 @@
+// Global styles
+// --------------
+// 01. Typography
+// 02. Helpers
+// 03. Main components
+// 04. Custom components
+// 05. Custom Arabic styles
+
+/* ------------------------------------ */
+/* 01 Typography                        */
+/* ------------------------------------ */
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ios, .md {
+
+    // Page title
+    // ---------------------------------
+    ion-title .toolbar-title {
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    // Buttons
+    // ---------------------------------
+    button .button-inner {
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    ion-navbar button .button-inner {
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    // Label
+    // ---------------------------------
+    .label {
+        // The font-size is used when the floating label acts as placeholder
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    .input-has-focus .label-ios[floating], 
+    .input-has-value .label-ios[floating], 
+    .input-has-focus .label-md[floating], 
+    .input-has-value .label-md[floating] {
+        // We don't change the font since the label is scaled at 80%
+        font-weight: 600;
+    }
+
+    .label-ios[stacked], .label-md[stacked] {
+        font-weight: 600;
+        font-size: 14px;  
+    }
+
+    ion-item.dropdown {
+        .label.label-md.label-md-placeholder,
+        .label.label-ios.label-ios-placeholder {
+            font-weight: 600;
+            font-size: 14px;          
+        }
+    }
+
+    // Placeholders
+    // ---------------------------------
+    textarea::-webkit-input-placeholder,
+    input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: map-get($colors, placeholder) !important;
+        font-weight: 400;
+        font-size: 16px;
+        opacity:  1 !important;
+    }
+    textarea::-webkit-input-placeholder,
+    input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: map-get($colors, placeholder) !important;
+        font-weight: 400;
+        font-size: 16px;
+        opacity:  1 !important;
+    }
+    textarea::-webkit-input-placeholder,
+    input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: map-get($colors, placeholder) !important;
+        font-weight: 400;
+        font-size: 16px;
+        opacity:  1 !important;
+    }
+    textarea::-webkit-input-placeholder,
+    input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: map-get($colors, placeholder) !important;
+        font-weight: 400;
+        font-size: 16px;
+        opacity:  1 !important;
+    }
+
+    // Text
+    // ---------------------------------
+
+    input, p, textarea, custom-dropdown ion-label.label {
+        font-weight: 500;
+        font-size: 16px;
+    }    
+
+    h2 {
+        font-weight: 500;
+        font-size: 24px;
+    }
+
+    h3 {
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    h4 {
+        font-weight: 500;
+        font-size: 16px;
+    }
+}
+
+/* ------------------------------------ */
+/* 02 Helpers                           */
+/* ------------------------------------ */
+.vertical-center {
+    .fixed-content,
+    .scroll-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+// Custom label animations: in order to transform the label form a placeholder to a floating label
+.label-ios[floating],
+.label-md[floating] {
+    transition: transform 150ms ease-in-out, 
+                -webkit-transform 150ms ease, 
+                color 150ms ease-in-out,
+                font-weight 150ms ease-in-out;
+}
+
+.input-has-focus .label-ios[floating], .input-has-value .label-ios[floating], 
+.input-has-focus .label-md[floating], .input-has-value .label-md[floating],
+.label-ios[stacked], .label-md[stacked]{
+    color: map-get($colors, primary);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+// Input fixes
+// ---------------------------------
+.list-md > .item-block:last-child .item-inner, 
+.list-md > .item-wrapper:last-child .item-inner {
+    border-bottom: 1px solid #dedede;
+}
+
+.list-md .item-input:last-child {
+    border-bottom: none;
+}
+
+.list-ios > .item-block:first-child {
+    border-top: none;
+}
+
+.list-ios[inset] > .item:last-child, 
+.list-ios[inset] > .item-wrapper:last-child .item {
+    border-bottom: 1px solid #c8c7cc;
+}
+
+// Dropdowns
+// ---------------------------------
+ion-item.dropdown {
+    &.item-ios.item-label-stacked .text-input, 
+    &.item-ios.item-label-floating .text-input,
+    &.item-label-stacked .text-input-md, 
+    &.item-label-floating .text-input-md {
+        width: calc(100% - 40px);
+    }
+
+    .dropdown-arrow {
+        position: absolute;
+        color: map-get($colors, placeholder);
+        margin: 0;
+        right: 16px;
+        bottom: 0;
+    }
+
+    &.item-textarea {
+        .dropdown-arrow {
+            bottom: 16px;
+        }
+    }
+}
+
+
+// Android Workaround to hide android's default validation colors
+// ---------------------------------
+@mixin no-validation-colors {
+    ion-item .item-inner,
+    ion-item.item-ios.item-input,
+    ion-item.item-md.item-input,
+    ion-item.item-md.item-input.input-has-focus:last-child,
+    ion-item.item-md.item-input.input-has-focus .item-inner,
+    ion-item.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner,
+    ion-item.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+        border-bottom: none !important;
+        box-shadow: none;
+    }
+}
+
+// Main Logo
+// ---------------------------------
+@mixin logo($size, $padding) {
+    ion-row.logo-container {
+        padding: $padding;
+    }
+    div.logo {
+        background-image: url(../assets/img/logo.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center, center;
+        width: 100%;
+        height: $size;
+        background-position: center, center;
+    }
+}
+
+@mixin inline-items {
+    ion-row.two-items-container {
+        ion-col:first-child {
+            padding: 0 8px 0 0;
+        }
+        ion-col:last-child {
+            padding: 0 0 0 8px;
+        }
+    }
+}
+
+@mixin inline-items-arabic {
+    ion-row.two-items-container {
+        ion-col:first-child {
+            padding: 0 0 0 8px;
+        }
+        ion-col:last-child {
+            padding: 0 8px 0 0;
+        }
+    }
+}
+
+// Inputs with background color
+// ---------------------------------
+@mixin input-with-color-background($color) {
+
+    @include no-validation-colors;
+
+    ion-item.item-md,
+    ion-item.item-md.item-block .item-inner  {
+        padding-left: 4px;
+        padding-right: 0;
+    }
+
+    ion-item.form-input.item.item-block {
+        background-color: map-get($colors, #{$color});
+
+        &:not(:first-child) {
+            margin-top: 16px;
+        }
+    }
+
+    @include inline-items;
+
+    ion-item.item-radio,
+    ion-item.item-datetime {
+        background-color: map-get($colors, #{$color});
+        padding-left: 10px;
+
+        ion-label {
+            color: #999;
+        }
+    }
+
+    ion-item.item-datetime {
+        margin-top: 16px;        
+    }
+
+    ion-item.item-radio:not(:first-child) {
+        margin-top: 10px;
+    }
+
+    ion-item.item-radio:last-child {
+        margin-bottom: 10px;
+    }
+
+    /* Remove input lines on iOS */
+    .list-ios[inset] .item {
+        border-bottom: none;
+    }
+
+    .list-ios > .item-block:first-child {
+        border-top: none;
+    }
+
+    .list-ios > .item-block:last-child {
+        border-bottom: none;
+    }
+
+    /* Remove input lines on windows phone */
+    .text-input-wp {
+        border: none;
+    }
+}
+
+@mixin input-with-color-background-arabic($color) {
+    @include input-with-color-background($color);
+    @include inline-items-arabic;
+}
+
+// Single button container
+// ---------------------------------
+@mixin simple-button-container($margin) {
+    ion-row.simple-btn-container {
+        margin: $margin;
+
+        ion-col {        
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+// Double button container
+// ---------------------------------
+@mixin double-button-container($margin) {
+    ion-row.double-btn-container {
+        margin: $margin;
+
+        ion-col:nth-child(1) {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+        ion-col:nth-child(2) {
+            padding-left: 5px;
+            padding-right: 0;
+        }
+    }
+}
+
+@mixin double-button-container-arabic($margin) {
+    ion-row.double-btn-container {
+        margin: $margin;
+
+        ion-col:nth-child(1) {
+            padding-left: 5px;
+            padding-right: 0;
+        }
+        ion-col:nth-child(2) {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+    }
+}
+
+// Centered text
+// ---------------------------------
+@mixin centered-text($margin) {
+    .centered {
+        margin: $margin;
+        text-align: center;
+    }
+}
+
+/* ---------------------------------
+// Inputs with country flag
+--------------------------------- */
+@mixin input-with-flag {
+    ion-item.country-dropdown.item-ios ion-avatar[item-left],
+    ion-item.country-dropdown.item-md ion-avatar[item-left],
+    ion-item.country-dropdown.item-wp ion-avatar[item-left],
+    ion-item.country-dropdown.item-ios ion-avatar[item-right],
+    ion-item.country-dropdown.item-md ion-avatar[item-right],
+    ion-item.country-dropdown.item-wp ion-avatar[item-right] {
+        position: absolute;
+        left: initial;
+        right: 24px;
+        bottom: 10px;
+        margin: 0;
+        min-width: 0;
+        min-height: 0;
+    }
+}
+
+@mixin input-with-flag-arabic { 
+    ion-item.country-dropdown.item-ios ion-avatar[item-left],
+    ion-item.country-dropdown.item-md ion-avatar[item-left],
+    ion-item.country-dropdown.item-wp ion-avatar[item-left],
+    ion-item.country-dropdown.item-ios ion-avatar[item-right],
+    ion-item.country-dropdown.item-md ion-avatar[item-right],
+    ion-item.country-dropdown.item-wp ion-avatar[item-right] {
+        position: absolute;
+        right: initial;
+        left: 24px;
+        bottom: 10px;
+        margin: 0;
+        min-width: 0;
+        min-height: 0;
+    }
+}
+
+/* ---------------------------------
+// Footer with button
+--------------------------------- */
+@mixin footer-with-button {
+    ion-footer {
+        &.footer-md::before {
+            background-image: none;
+        }
+
+        & ion-toolbar.toolbar {
+            padding: 0;
+            min-height: 65px;
+
+            div.toolbar-background {
+                background-color: map-get($colors, background);
+                border: none;
+            }
+
+            button {
+                font-weight: 700;
+                border-radius: 0;
+                border: 0;
+                margin: 0;
+            }
+        }
+    }
+}
+
+/* ---------------------------------
+// Items with push arrow
+--------------------------------- */
+@mixin items-with-arrow {
+    ion-item.item.item-block .item-inner {
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2020'><path%20d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z'%20fill='%23c8c7cc'/></svg>");
+        padding-right: 32px;
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 14px 14px;
+    }
+}
+
+
+
+/* ------------------------------------ */
+/* 03 Main components                   */
+/* ------------------------------------ */
+
+form {
+    width: 100%;
+}
+
+div.error-message {
+    color: map-get($colors, danger);
+    margin-top: 5px;
+}
+
+div.success-message {
+    color: map-get($colors, green);
+    margin-top: 5px;
+}
+
+// Butons
+// ------------
+button.button-default {
+    height: 65px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid map-get($colors, white);
+    text-transform: none;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+button.white-btn {
+    color: map-get($colors, primary);
+    background-color: map-get($colors, white);
+}
+
+button.transparent-btn {
+    color: map-get($colors, white);
+    background-color: transparent;
+}
+
+button.blue-btn {
+    color: map-get($colors, white);
+    background-color: map-get($colors, primary);
+}
+
+button.white-btn.activated,
+button.transparent-btn.activated,
+button.blue-btn.activated {
+    color: map-get($colors, white);
+    background-color: map-get($colors, primary);
+    box-shadow: none;
+}
+
+// Tabs
+// ------------
+
+.ios, .md {
+    .header-md::after, 
+    .tabs-md[tabsPlacement="top"] > .tabbar::after, 
+    .footer-md::before, 
+    .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        display: none;
+        background-image: none !important;
+    }
+}
+
+// Custom icons
+// https://forum.ionicframework.com/t/anyway-to-custom-the-tabbars-icon-with-my-own-svg-file/46131/36
+// ------------
+ion-icon {
+    &[class*="whtv-"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        transform: translate3d(0, 0, 0);
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        width: 26px;
+        height: 26px;
+    }
+    // custom icons
+    &[class*="whtv-search"] {
+        mask-image: url(../assets/icon/search.svg);
+    }
+    &[class*="whtv-list"] {
+        mask-image: url(../assets/icon/list.svg);
+    }
+    &[class*="whtv-star"] {
+        mask-image: url(../assets/icon/star.svg);
+    }
+    &[class*="whtv-settings"] {
+        mask-image: url(../assets/icon/settings.svg);
+    }
+    &[class*="whtv-contact"] {
+        mask-image: url(../assets/icon/contact.svg);
+    }
+}
+
+
+/* ------------------------------------ */
+/* 04 Custom Components                 */
+/* ------------------------------------ */
+@import '../utils/custom-dropdown/custom-dropdown.component';
+
+
+/* ------------------------------------ */
+/* 05 Custom Arabic styles              */
+/* ------------------------------------ */
+
+@mixin arabic-styles() {
+    ion-app.lang-ar {
+        direction: rtl;
+
+        ion-row.double-btn-container {
+            margin-top: 16px;
+
+            ion-col:nth-child(1) {
+                padding-left: 5px;
+                padding-right: 0;
+            }
+            ion-col:nth-child(2) {
+                padding-left: 0;
+                padding-right: 5px;
+            }
+        } 
+
+        button.back-button {
+            position: absolute;
+            left: 4px;
+            z-index: 999;
+        }
+    }
+}
+
+@include arabic-styles();

@@ -1,0 +1,64 @@
+ .ios, .md {
+    page-contact {
+
+        @include footer-with-button();
+
+        div.logo {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center, center;
+            min-height: 150px;
+            width: 100%;
+        }
+
+        div.logo-fg {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 150px;
+            background-color: darken(map-get($colors, primary), 25);
+            opacity: 0.65;
+            z-index: 9;
+        }
+
+        div.title-container {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 99;
+
+            h2 {
+                color: map-get($colors, white);
+                line-height: 150px;
+                vertical-align: middle;
+                text-align: center;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+        }
+
+        div.contact-details {
+            padding: 16px 32px;
+            
+            button {
+                margin-top: 16px;
+            }
+        }
+
+        div.social-links {
+            span.detail {
+                font-size: 16px;
+                font-weight: 500;
+                color: map-get($colors, text);
+            }
+        }
+    }
+}
+
+// Arabic language styles
+// ---------------------------------------------
+ion-app.lang-ar { 
+    page-contact { 
+    }
+}
+

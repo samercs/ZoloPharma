@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{ 'PAGES.SETTINGS' | translate }}</ion-title>
+        <ion-buttons end>
+            <button [@signOutButtonFadeInRight]="signOutButtonState" (click)="logout()" ion-button>
+                {{ 'LOG_OUT' | translate }}
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form *ngIf="userProfile">
+        <ion-row class="form-container">
+            <ion-col>
+                <ion-list inset>
+                    <ion-item [@firstNameFieldFadeIn]="firstNameFieldState" class="form-input">
+                        <ion-label color="placeholder" stacked>{{ 'SETTINGS_PAGE.FIRST_NAME' | translate }}</ion-label>
+                        <ion-input readonly [value]="userProfile.firstName" type="text"></ion-input>
+                    </ion-item>
+                    <ion-item [@lastNameFieldFadeIn]="lastNameFieldState" class="form-input">
+                        <ion-label color="placeholder" stacked>{{ 'SETTINGS_PAGE.LAST_NAME' | translate }}</ion-label>
+                        <ion-input readonly [value]="userProfile.lastName" type="text"></ion-input>
+                    </ion-item>
+                    <ion-item [@phoneNumberFieldFadeIn]="phoneNumberFieldState" class="form-input">
+                        <ion-label color="placeholder" stacked>{{ 'SETTINGS_PAGE.PHONE_NUMBER' | translate }}</ion-label>
+                        <ion-input readonly [value]="userProfile.phoneNumber" type="text"></ion-input>
+                    </ion-item>
+                    <ion-item [@emailFieldFadeIn]="emailFieldState" class="form-input">
+                        <ion-label color="placeholder" stacked>{{ 'SETTINGS_PAGE.EMAIL' | translate }}</ion-label>
+                        <ion-input readonly [value]="userProfile.email" type="text"></ion-input>
+                    </ion-item>
+
+                    <ion-item [@subscriptionFieldFadeIn]="subscriptionFieldState" class="form-input">
+                        <ion-label color="placeholder" stacked>{{ 'SETTINGS_PAGE.SUBSCRIPTION_DETAILS' | translate }}</ion-label>
+                        <ion-textarea *ngIf="isSubscriptionExprired === true" readonly [value]="'SETTINGS_PAGE.SUBSCRIPTION_EXPIRED' | translate: { value: userProfile.subscriptionEndDateUtc
+                            | date: 'dd/MM/yyyy' }" type="text"></ion-textarea>
+                        <ion-textarea *ngIf="isSubscriptionExprired === false && subscriptionDaysLeft > 0" readonly [value]="'SETTINGS_PAGE.SUBSCRIPTION_DAYS_LEFT' | translate: { value: subscriptionDaysLeft }"
+                            type="text"></ion-textarea>
+                        <ion-textarea *ngIf="isSubscriptionExprired === false && subscriptionDaysLeft === 0" readonly [value]="'SETTINGS_PAGE.SUBSCRIPTION_CERO_DAYS_LEFT' | translate"
+                            type="text"></ion-textarea>
+                    </ion-item>
+
+
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <button [@editProfileButtonFadeInUp]="editProfileButtonState" (click)="editProfile()" color="primary" ion-button full>{{ 'SETTINGS_PAGE.EDIT_PROFILE_BUTTON_TEXT' | translate }}</button>
+    </ion-toolbar>
+</ion-footer>

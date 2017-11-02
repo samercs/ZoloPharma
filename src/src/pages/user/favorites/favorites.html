@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{ 'PAGES.FAVORITES' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <p [@favoritesFadeIn]="favoritesState" padding *ngIf="videos && !videos.length">
+        {{ 'FAVORITES_PAGE.NO_RESULTS' | translate }}
+    </p>
+
+    <ion-list [@favoritesFadeIn]="favoritesState" *ngIf="videos && videos.length">
+        <ion-item-sliding *ngFor="let video of videos" #slidingItem>
+            <ion-item class="result" (click)="openVideo(video, slidingItem)">
+                <div class="image-bg" [style.background-image]="'url(assets/img/demo1.jpg)'"></div>
+                <div class="image-fg"></div>
+
+                <div class="details">
+                    <div class="date">
+                        <p class="day">{{ video.competition.dateUtc | date: 'dd' }}</p>
+                        <p class="month">{{ video.competition.dateUtc | date: 'MMM' }}</p>
+                    </div>
+                    <h4 class="rider-name">{{ video.rider.name }}</h4>
+                    <p class="horse-name">{{ video.horseName }}</p>
+                    <p class="location">{{ video.competition.name }}</p>
+                    <p class="location">{{ video.competition.location }}</p>
+                </div>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)="deleteFavorite(video, slidingItem)">{{ 'FAVORITES_PAGE.DELETE' | translate }}</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,98 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{ 'PAGES.REGISTER' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <form (ngSubmit)="register()" [formGroup]="registerForm">
+
+        <ion-row class="form-container">
+            <ion-col>
+                <ion-list inset>
+
+                    <!-- First Name -->
+                    <ion-item [@firstNameFieldFadeIn]="firstNameFieldState" class="form-input">
+                        <ion-label color="placeholder" floating>{{ 'FIELDS.FIRST_NAME' | translate }}</ion-label>
+                        <ion-input formControlName="firstName" type="text"></ion-input>
+                    </ion-item>
+                    <error-message [submitted]="submitAttempt" [name]="'FIELDS.FIRST_NAME' | translate | lowercase" [control]="registerForm.get('firstName')"></error-message>
+
+                    <!-- Last Name -->
+                    <ion-item [@lastNameFieldFadeIn]="lastNameFieldState" class="form-input">
+                        <ion-label color="placeholder" floating>{{ 'FIELDS.LAST_NAME' | translate }}</ion-label>
+                        <ion-input formControlName="lastName" type="text"></ion-input>
+                    </ion-item>
+                    <error-message [submitted]="submitAttempt" [name]="'FIELDS.LAST_NAME' | translate | lowercase" [control]="registerForm.get('lastName')"></error-message>
+
+                    <!-- Email -->
+                    <ion-item [@emailFieldFadeIn]="emailFieldState" class="form-input">
+                        <ion-label color="placeholder" floating>{{ 'FIELDS.EMAIL' | translate }}</ion-label>
+                        <ion-input formControlName="email" type="email"></ion-input>
+                    </ion-item>
+                    <error-message [submitted]="submitAttempt" [name]="'FIELDS.EMAIL' | translate | lowercase" [control]="registerForm.get('email')"></error-message>
+
+                    <!-- Country Name -->
+                    <ion-item [@countryFieldFadeIn]="countryFieldState" (click)="showCountriesDropdown()" class="country-dropdown form-input">
+                        <ion-avatar item-left>
+                            <i class="flag flag-{{ selectedCountry?.isoCode | lowercase }}"></i>
+                        </ion-avatar>
+                        <ion-label color="placeholder" floating>{{ 'FIELDS.COUNTRY' | translate }}</ion-label>
+                        <ion-input readonly formControlName="countryName" type="text"></ion-input>
+                    </ion-item>
+                    <error-message [submitted]="submitAttempt" [name]="'FIELDS.COUNTRY' | translate | lowercase" [control]="registerForm.get('countryName')"></error-message>
+
+                    <!-- Phone number -->
+                    <ion-row class="two-items-container">
+                        <ion-col width-33>
+                            <ion-item [@phoneCodeFieldFadeIn]="phoneCodeFieldState" class="form-input">
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.PHONE_COUNTRY_CODE' | translate }}</ion-label>
+                                <ion-input formControlName="phoneCountryCode" type="text"></ion-input>
+                            </ion-item>
+                            <error-message [submitted]="submitAttempt" [name]="'FIELDS.PHONE_COUNTRY_CODE' | translate | lowercase" [control]="registerForm.get('phoneCountryCode')"></error-message>
+                        </ion-col>
+                        <ion-col width-67>
+                            <ion-item [@phoneNumberFieldFadeIn]="phoneNumberFieldState" class="form-input">
+                                <ion-label color="placeholder" floating>{{ 'FIELDS.PHONE_NUMBER' | translate }}</ion-label>
+                                <ion-input formControlName="phoneNumber" type="text"></ion-input>
+                            </ion-item>
+                            <error-message [submitted]="submitAttempt" [name]="'FIELDS.PHONE_NUMBER' | translate | lowercase" [control]="registerForm.get('phoneNumber')"></error-message>
+                        </ion-col>
+                    </ion-row>
+                    
+                    <!-- Password -->
+                    <ion-item [@passwordFieldFadeIn]="passwordFieldState" class="form-input">
+                        <ion-label color="placeholder" floating>{{ 'FIELDS.PASSWORD' | translate }}</ion-label>
+                        <ion-input formControlName="password" type="password"></ion-input>
+                    </ion-item>
+                    <error-message [submitted]="submitAttempt" [name]="'FIELDS.PASSWORD' | translate | lowercase" [control]="registerForm.get('password')"></error-message>
+
+                    <!-- Password Confirmation -->
+                    <ion-item [@confirmPasswordFieldFadeIn]="confirmPasswordFieldState" class="form-input">
+                        <ion-label color="placeholder" floating>{{ 'FIELDS.CONFIRM_PASSWORD' | translate }}</ion-label>
+                        <ion-input formControlName="confirmPassword" type="password"></ion-input>
+                    </ion-item>
+
+                    <!-- 
+                        The password confirmation field does not have a error-message element but a form-error-message. This is because 
+                        its validation depends on the password field, so it's a form validation instead of a single field validation. 
+                    -->
+                    <form-error-message [submitted]="submitAttempt" [form]="registerForm" [control]="registerForm.get('confirmPassword')"></form-error-message>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+        <!-- 
+			Hidden button to make the GO button submit the form, 
+			since the button is in the footer (outside the form tag) 
+		-->
+		<button id="hidden-btn" type="submit"></button>
+
+    </form>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <button [@registerButonFadeInUp]="registerButonState" (click)="register()" color="primary" ion-button full>{{ 'REGISTER_PAGE.BUTTON_TEXT' | translate }}</button>
+    </ion-toolbar>
+</ion-footer>

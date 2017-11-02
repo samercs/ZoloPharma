@@ -1,0 +1,38 @@
+<ion-content>
+
+    <!--
+		<video id="local-video" class="img-responsive" style="visibility:hidden;" loop webkit-playsinline playsinline>
+			<source src="assets/video/intro.mp4" type="video/mp4">
+		</video>
+	-->
+
+    <div class="bg-image"></div>
+
+    <div class="btn-share">
+        <button ion-button>
+			<ion-icon name="logo-facebook"></ion-icon>			
+		</button>
+        <button ion-button>
+			<ion-icon name="logo-twitter"></ion-icon>			
+		</button>
+        <button ion-button>
+			<ion-icon name="logo-googleplus"></ion-icon>			
+		</button>
+    </div>
+
+    <div class="btn-container">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <button [@firstButtonFadeInUp]="firstButtonState" class="white-btn" (click)="redirectToRegisterPage()" ion-button block>{{'HOME_PAGE.REGISTER' | translate }}</button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <button [@secondButtonFadeInUp]="secondButtonState" class="transparent-btn" (click)="redirectToLoginPage()" ion-button block>{{'HOME_PAGE.LOG_IN' | translate }}</button>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+    </div>
+</ion-content>

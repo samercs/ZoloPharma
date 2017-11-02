@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{ 'SUCCESS' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="vertical-center" padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h2 [@titleFieldFadeIn]="titleFieldState">{{ 'THANK_YOU_PAGE.TITLE' | translate }}</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <p [@introTextFieldFadeIn]="introTextFieldState">{{ 'THANK_YOU_PAGE.TEXT' | translate }}
+                    <p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <button [@redirectButtonFadeInUp]="redirectButtonState" (click)="redirectToSearchPage()" color="primary" ion-button full>{{ 'THANK_YOU_PAGE.BUTTON_TEXT' | translate }}</button>
+    </ion-toolbar>
+</ion-footer>
